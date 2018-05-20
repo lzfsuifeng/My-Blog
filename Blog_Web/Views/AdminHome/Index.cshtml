@@ -1,0 +1,75 @@
+﻿@using System.Security.Cryptography
+@model Blog_Web.Common.PaginatedList<Blog_Web.ViewsModels.AdminHome>
+@{
+    ViewData["Title"] = "博客后台";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="header">
+
+    <h1 class="page-title">后台</h1>
+    <ul class="breadcrumb">
+        <li><a href="#">博客管理</a> </li>
+    </ul>
+
+</div>
+
+<div class="main-content">
+    <div class="btn-toolbar list-toolbar">
+        <a class="btn btn-primary" asp-action="GreateBlog"><i class="fa fa-plus"></i> 发布新博客</a>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">按标题排序</a>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">按时间排序</a>
+
+        <div class="btn-group">
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>时间</th>
+                <th>摘要</th>
+                <th>标签</th>
+                <th style="width: 3.5em;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td>@u.Title</td>
+                    <td>@u.Time</td>
+                    <td>@u.Digest</td>
+                    <td>@u.TallyName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@u.ID"><i class="fa fa-pencil"></i></a>
+                        <a asp-action="Delete" asp-route-id="@u.ID"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+    @*分页*@
+    @{
+        var prevDisabled = !Model.HasPreViousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        上一页
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        下一页
+    </a>
+
+</div>

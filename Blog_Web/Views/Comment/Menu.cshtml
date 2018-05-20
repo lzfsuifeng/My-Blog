@@ -1,0 +1,5 @@
+﻿
+@foreach (var u in ViewBag.commentsList)
+{
+    <li><a asp-controller="Home" asp-action="ReadBlog" asp-route-id="@u.Blog_Id">@u.Comment_Context</a></li>
+}

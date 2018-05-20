@@ -1,0 +1,35 @@
+﻿@model Blog_Web.Models.Tally
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="header">
+    <h1 class="page-title">后台</h1>
+    <ul class="breadcrumb">
+        <li><a href="index.html">标签管理</a> </li>
+        <li><a href="index.html">编辑标签</a> </li>
+    </ul>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tally_Id" />
+            <div class="form-group">
+                <label asp-for="Tally_Name" class="control-label"></label>
+                <input asp-for="Tally_Name" class="form-control" />
+                <span asp-validation-for="Tally_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回</a>
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model Blog_Web.Common.PaginatedList<Blog_Web.ViewsModels.HomeBlog>
+@{
+    ViewData["Title"] = "博客首页";
+}
+
+  @*内容*@
+  <div class="col-md-8 blog-main">
+      <div class="row">
+          @foreach (var u in Model)
+           {               
+                  
+            <div class="span12">
+                   <h3>
+                       <a asp-controller="Home" asp-action="ReadBlog" asp-route-id="@u.Id"> @u.Title</a>
+                  </h3>
+                   <div class="row-fluid">
+                                  <div class="span2">
+                                      <img alt="140x140" src="@u.BlogImg"  style="height:400px;width:650px"/>
+                                  </div>
+                                  <div class="span6">
+                                      <p>
+                                          @u.Digest
+                                      </p>
+                                  </div>
+                                  <div class="span4">
+                                      <blockquote>
+                                              @u.dateTime
+                                          <small>标签 <cite>@u.tallyName</cite></small>
+                                          <cite><a asp-controller="Home" asp-action="ReadBlog" asp-route-id="@u.Id">阅读</a></cite>
+                                      </blockquote>
+                                  </div>
+                              </div>
+             </div>
+
+           }
+      </div>
+                <div class="paging">
+
+                    @{
+                        var prevDisable = !Model.HasPreViousPage ? "disabled" : "";
+                        var nextDisable = !Model.HasNextPage ? "disabled" : "";
+                    }
+                    <a asp-action="Index" class="btn btn-default @prevDisable" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-page="@(Model.PageIndex-1)" asp-route-currentStudent="@ViewData["currentStudent"]">上一页</a>
+                    <a asp-action="Index" class="btn btn-default @nextDisable" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-page="@(Model.PageIndex+1)" asp-route-currentStudent="@ViewData["currentStudent"]">下一页</a>
+                </div>
+            </div>
+
+    

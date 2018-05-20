@@ -1,0 +1,5 @@
+﻿
+@foreach (var u in ViewBag.tallysList)
+{
+    <li><a asp-controller="Home" asp-action="Index" asp-route-id="#">@u.Tally_Name</a></li>
+}

@@ -1,0 +1,40 @@
+﻿@model Blog_Web.Models.Contact
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<div class="widewrapper main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 clean-superblock" id="contact">
+                <h2>想对博主说什么？</h2>
+
+                <form asp-action="Contact" method="post" enctype="multipart/form-data" accept-charset="utf-8" class="contact-form">
+
+                    <input type="text" asp-for="Name" id="contact-name" placeholder="留下的你的名字" class="form-control input-lg">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+
+                    <input type="email" asp-for="Email" id="contact-email" placeholder="留下你的Email" class="form-control input-lg">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+
+                    <textarea id="container" asp-for="Message" type="text/plain" rows="10" placeholder="你想说什么？" class="form-control input-lg"></textarea>
+                    @*<!-- 配置文件 -->
+                    <script src="~/utf8-net/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script src="~/utf8-net/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container');
+                    </script>*@
+                    <span asp-validation-for="Message" class="text-danger"></span>
+
+                    <div class="buttons clearfix">
+                        <button type="submit" class="btn btn-xlarge btn-clean-one">发送</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

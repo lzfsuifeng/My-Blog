@@ -1,0 +1,52 @@
+﻿@model Blog_Web.Models.Administrator
+
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="header">
+
+    <h1 class="page-title">后台</h1>
+    <ul class="breadcrumb">
+        <li><a href="#">修改个人信息</a> </li>
+    </ul>
+
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateUser" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Admin_ID" />
+            <div class="form-group">
+                <label asp-for="Admin_Name" class="control-label"></label>
+                <input asp-for="Admin_Name" class="form-control" />
+                <span asp-validation-for="Admin_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <img src="@Model.Admin_Img" style="height:140px;width:200px" />
+                <input asp-for="Admin_Img" type="file" class="form-control" />
+                <span asp-validation-for="Admin_Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Admin_Password" class="control-label"></label>
+                <input asp-for="Admin_Password" class="form-control" />
+                <span asp-validation-for="Admin_Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Admin_Email" class="control-label"></label>
+                <input asp-for="Admin_Email" class="form-control" />
+                <span asp-validation-for="Admin_Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回</a>
+</div>
+

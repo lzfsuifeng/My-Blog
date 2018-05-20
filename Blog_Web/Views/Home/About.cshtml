@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<div class="widewrapper main">
+    <div class="container about">
+        <h1>你好, 我叫<span class="about-bold">  黎志峰</span></h1>
+        <div class="col-md-6 col-sm-6">
+            <article class=" blog-teaser">
+                <header>
+                    <img src="~/Files/UserImg/P71025-182515.jpg" alt="" style="height:400px;width:300px">                    
+                </header>
+               
+            </article>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <dl>
+                <dt>
+                   学校
+                </dt>
+                <dd>
+                    江西师范大学
+                </dd>
+                <dt>
+                   专业
+                </dt>
+                <dd>
+                    软件工程（商务软件应用与开发）
+                </dd>                
+                <dt>
+                    年级
+                </dt>
+                <dd>
+                   大三（15级）
+                </dd>
+                <dt>
+                   作品自我评价
+                </dt>
+                <dd>
+                    这两周时间感会良多。在接到博客园这个代码作业之前，并没有接触过Core。从来没有试过，在两周内接触学习一种新技术，并用它写一个简单的Demo。                   
+                </dd>
+                <dd>
+                    第一周，为了学习Core。在腾讯课堂上看完了梁桐铭的《ASP.NET Core2.0 项目入门实战视频》，还买了《ASP.NET Core 跨平台开发从入门到实战》书，并把书上的示例敲了一遍。                   
+                </dd>
+                <dd>
+                    MSDN上关于Core的文档也过了一遍，也把文档上的几个示例敲了一遍
+                    <a href=" https://docs.microsoft.com/zh-cn/aspnet/core/data/ef-mvc/index?view=aspnetcore-2.0">ASP.NET Core MVC 和 EF Core - 教程系列 | Microsoft Docs </a>
+                </dd>
+                <dd>
+                    第一周做完这些，第二周才敢开始写博客，但是还是遇见很多问题。很多farmwork直接用的东西，core要先注入才能使用。但还是把这个博客憋出来了。整整两周时间除了上课，基本上都在忙这个，快虚脱了，虽然只能做CRUD的简单功能。
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+
+    <div class="about-button">
+        <a class="btn btn-xlarge btn-clean-one" asp-controller="Contact" asp-action="Contact">联系博主</a>
+    </div>
+    <hr>
+</div>
+

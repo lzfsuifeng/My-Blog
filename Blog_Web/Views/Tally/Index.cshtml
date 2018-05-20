@@ -1,0 +1,52 @@
+﻿@model Blog_Web.Common.PaginatedList<Blog_Web.Models.Tally>
+@{
+    ViewData["Title"] = "ListTallys";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="header">
+    <h1 class="page-title">后台</h1>
+    <ul class="breadcrumb">
+        <li><a href="index.html">标签管理</a> </li>
+    </ul>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>标签名</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tally_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tally_Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Tally_Id">编辑</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Tally_Id">删除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="paging">
+
+    @{
+        var prevDisable = !Model.HasPreViousPage ? "disabled" : "";
+        var nextDisable = !Model.HasNextPage ? "disabled" : "";
+    }
+    <a asp-action="Index" class="btn btn-default @prevDisable" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-page="@(Model.PageIndex-1)" asp-route-currentStudent="@ViewData["currentStudent"]">上一页</a>
+    <a asp-action="Index" class="btn btn-default @nextDisable" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-page="@(Model.PageIndex+1)" asp-route-currentStudent="@ViewData["currentStudent"]">下一页</a>
+</div>
+
+<div>
+    <a asp-controller="AdminHome" asp-action="Index">返回主页</a>
+</div>
+

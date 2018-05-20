@@ -1,0 +1,78 @@
+﻿@model Blog_Web.Models.Blog
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="header">
+
+    <h1 class="page-title">后台</h1>
+    <ul class="breadcrumb">
+        <li><a href="index.html">标签管理</a> </li>
+        <li class="active">修改博客</li>
+    </ul>
+
+</div>
+<div class="main-content">
+
+    <div class="row">
+        <div class="col-md-8">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="home">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <div class="form-group">                          
+                            <input asp-for="Blog_Title" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>更改封面</label>
+                            <img src="@Html.DisplayFor(u=>u.Blog_Img)" style="height:140px;width:200px" />
+                            <input asp-for="Blog_Img" type="file" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>博客摘要</label>
+                            <textarea asp-for="Blog_Digest" rows="3" class="form-control"></textarea>
+                        </div>
+
+                        @*百度富文本框*@
+                        <div class="form-group">
+                            <label>博客内容</label>
+                            @*<textarea value="Smith" rows="3" class="form-control">2817 S 49th</textarea>*@
+                            <!-- 加载编辑器的容器 -->
+                            <textarea id="container" asp-for="Blog_Context" type="text/plain">
+                            </textarea>
+                            <!-- 配置文件 -->
+                            <script src="~/utf8-net/ueditor.config.js"></script>
+                            @*<script type="text/javascript" src="ueditor.config.js"></script>*@
+                            <!-- 编辑器源码文件 -->
+                            <script src="~/utf8-net/ueditor.all.js"></script>
+                            @*<script type="text/javascript" src="ueditor.all.js"></script>*@
+                            <!-- 实例化编辑器 -->
+                            <script type="text/javascript">
+                                var ue = UE.getEditor('container');                                
+                            </script>
+                            <span asp-validation-for="Blog_Context" class="text-danger"></span>
+                        </div>
+                        @*下拉框*@
+                        <div class="form-group">
+                            <label>博客标签</label>
+                            <select asp-for="Tally_Id" class="form-control" asp-items="ViewBag.Tally ">
+                                <option value="">--请选择标签--</option>
+                            </select>
+                            <span asp-validation-for="Tally_Id" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-save"></i><input type="submit"  value="更改" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

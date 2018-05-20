@@ -1,0 +1,51 @@
+﻿@model Blog_Web.Models.Comment
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="header">
+<h1 class="page-title">后台</h1>
+<ul class="breadcrumb">
+    <li><a href="#">评论管理</a> </li>
+    <li><a href="#">删除评论</a> </li>
+</ul>
+</div>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            昵称
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visitor)
+        </dd>
+        <dt>
+            时间
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment_Time)
+        </dd>
+        <dt>
+            邮箱
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            内容
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment_Context)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Comment_Id" />
+        <input type="submit" value="删除" class="btn btn-default" /> |
+        <a asp-action="Index">返回</a>
+    </form>
+</div>
